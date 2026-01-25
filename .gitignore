@@ -1,0 +1,6 @@
+obj/
+bin/
+Migrations/
+.env
+appsettings.Development.json
+appsettings.json
