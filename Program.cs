@@ -116,5 +116,6 @@ app.MapGet("/", () => "Hello World!");
 app.MapTasksRoutes();
 app.MapUserRoutes();
 app.MapStatusRoutes();
+app.MapRbacRoutes();
 
 app.Run();
