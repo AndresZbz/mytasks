@@ -42,12 +42,13 @@ public static class User
             username = payload.username,
             email = payload.email,
             password = password_hash,
+            role_id = payload.role_id //the frontend should automatically sets the role_id by default (ex: the frontend sends the role_id 2 assuming its the "user" role)
         };
 
         await db.User.AddAsync(user);
         await db.SaveChangesAsync();
 
-        return Results.Ok("User waas created succesfully");
+        return Results.Ok("User was created succesfully");
     }
 
     public static async Task<IResult> LoginUser(LoginUserDto payload, AppDbContext db)

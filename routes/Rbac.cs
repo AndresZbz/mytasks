@@ -8,18 +8,18 @@ public static class Rbac
         var group = app.MapGroup("/api/rbac");
 
         //roles
-        group.MapGet("/roles/", GetAllRoles);
-        group.MapPost("/roles/", PostRole);
-        group.MapPatch("/roles/{id}", UpdateRole);
+        group.MapGet("/roles/", GetAllRoles).RequireAuthorization().WithOpenApi();
+        group.MapPost("/roles/", PostRole).RequireAuthorization().WithOpenApi();
+        group.MapPatch("/roles/{id}", UpdateRole).RequireAuthorization().WithOpenApi();
 
         //permissions
-        group.MapGet("/permissions/", GetAllPermissions);
-        group.MapPost("/permissions/", PostPermission);
-        group.MapPatch("/permissions/{id}", UpdatePermission);
+        group.MapGet("/permissions/", GetAllPermissions).RequireAuthorization().WithOpenApi();
+        group.MapPost("/permissions/", PostPermission).RequireAuthorization().WithOpenApi();
+        group.MapPatch("/permissions/{id}", UpdatePermission).RequireAuthorization().WithOpenApi();
 
         //role_permissions
-        group.MapGet("/role_permissions/", GetAllRolePermissions);
-        group.MapPost("/role_permissions/", PostRolePermission);
+        group.MapGet("/role_permissions/", GetAllRolePermissions).RequireAuthorization().WithOpenApi();
+        group.MapPost("/role_permissions/", PostRolePermission).RequireAuthorization().WithOpenApi();
     }
 
     //Roles endpoints
