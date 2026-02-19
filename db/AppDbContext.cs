@@ -74,7 +74,7 @@ public class AppDbContext : DbContext
         });
 
         modelBuilder.Entity<RolePermissions>(entity =>
-{
+        {
             entity.ToTable("RolePermissions", "Rbac");
             entity.HasKey(e => e.id);
             
@@ -82,12 +82,14 @@ public class AppDbContext : DbContext
                 .WithMany(e => e.role_permissions)
                 .HasForeignKey(e => e.role_id)
                 .OnDelete(DeleteBehavior.Cascade);
+            entity.Navigation(e => e.role);
                 
             entity.HasOne(e => e.permission) 
                 .WithMany(e => e.role_permissions)
                 .HasForeignKey(e => e.permission_id)
                 .OnDelete(DeleteBehavior.Cascade);
-        });
+            entity.Navigation(e => e.permission);
+        }); 
 
         //auxiliars
         modelBuilder.Entity<StatusModel>(entity =>
